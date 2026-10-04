@@ -29,4 +29,11 @@ public class Contrat {
 
     @Column(nullable = false)
     private boolean valide;
+
+    @OneToOne
+    @JoinColumn(name = "reservation_id")
+    private Reservation reservation;
+
+    @OneToOne(mappedBy = "contrat", cascade = CascadeType.ALL)
+    private Paiement paiement;
 }
