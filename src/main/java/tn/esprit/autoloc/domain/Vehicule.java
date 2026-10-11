@@ -7,7 +7,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.math.BigDecimal;
-import java.util.List;
+import java.util.Set;
 
 @Entity
 @Table(name = "vehicule")
@@ -45,17 +45,17 @@ public class Vehicule {
     @JoinColumn(name = "agence_id")
     private Agence agence;
 
-    @ManyToMany(cascade = CascadeType.ALL)
+    @ManyToMany(cascade = CascadeType.ALL) // nekhdmouch bel all, nekhdmou bel persist w remove
     @JoinTable(
             name = "vehicule_equipement",
             joinColumns = @JoinColumn(name = "vehicule_id"),
             inverseJoinColumns = @JoinColumn(name = "equipement_id")
     )
-    private List<Equipement> equipements;
+    private Set<Equipement> equipements;
 
     @OneToMany(mappedBy = "vehicule", cascade = CascadeType.ALL)
-    private List<Maintenance> maintenances;
+    private Set<Maintenance> maintenances;
 
     @OneToMany(mappedBy = "vehicule", cascade = CascadeType.ALL)
-    private List<Reservation> reservations;
+    private Set<Reservation> reservations;
 }

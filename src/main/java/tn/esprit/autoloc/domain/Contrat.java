@@ -8,6 +8,7 @@ import lombok.Setter;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.util.Set;
 
 @Entity
 @Table(name = "contrat")
@@ -19,7 +20,7 @@ public class Contrat {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long idContrat;
+    private Long idContrat; //type wrapper (ya long ya integer)
 
     @Column(nullable = false)
     private LocalDate dateSignature;
@@ -34,6 +35,6 @@ public class Contrat {
     @JoinColumn(name = "reservation_id")
     private Reservation reservation;
 
-    @OneToOne(mappedBy = "contrat", cascade = CascadeType.ALL)
-    private Paiement paiement;
+    @OneToMany(mappedBy = "contrat", cascade = CascadeType.PERSIST, orphanRemoval = true, fetch = FetchType.EAGER)
+    private Set<Paiement> paiements;
 }

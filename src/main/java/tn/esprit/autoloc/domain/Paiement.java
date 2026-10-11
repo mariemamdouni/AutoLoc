@@ -31,7 +31,7 @@ public class Paiement {
     @Column(nullable = false, length = 20)
     private ModePaiement modePaiement;
 
-    @OneToOne
+    @ManyToOne (fetch = FetchType.LAZY)
     @JoinColumn(name = "contrat_id")
     private Contrat contrat;
 }

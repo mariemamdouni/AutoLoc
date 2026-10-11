@@ -6,7 +6,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.util.List;
+import java.util.Set;
 
 @Entity
 @Table(name = "equipement")
@@ -24,5 +24,5 @@ public class Equipement {
     private String libelle;
 
     @ManyToMany(mappedBy = "equipements")
-    private List<Vehicule> vehicules;
+    private Set<Vehicule> vehicules;
 }
