@@ -42,15 +42,9 @@ public class Vehicule {
     private StatutVehicule statut;
 
     @ManyToOne
-    @JoinColumn(name = "agence_id")
     private Agence agence;
 
-    @ManyToMany(cascade = CascadeType.ALL) // nekhdmouch bel all, nekhdmou bel persist w remove
-    @JoinTable(
-            name = "vehicule_equipement",
-            joinColumns = @JoinColumn(name = "vehicule_id"),
-            inverseJoinColumns = @JoinColumn(name = "equipement_id")
-    )
+    @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
     private Set<Equipement> equipements;
 
     @OneToMany(mappedBy = "vehicule", cascade = CascadeType.ALL)

@@ -32,7 +32,6 @@ public class Contrat {
     private boolean valide;
 
     @OneToOne
-    @JoinColumn(name = "reservation_id")
     private Reservation reservation;
 
     @OneToMany(mappedBy = "contrat", cascade = CascadeType.PERSIST, orphanRemoval = true, fetch = FetchType.EAGER)

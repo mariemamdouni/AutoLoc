@@ -6,7 +6,8 @@ import tn.esprit.autoloc.domain.Vehicule;
 import tn.esprit.autoloc.repository.VehiculeRepository;
 import tn.esprit.autoloc.service.interfaces.IVehiculeService;
 
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 @Service
 @RequiredArgsConstructor
@@ -35,7 +36,8 @@ public class VehiculeServiceImpl implements IVehiculeService {
     }
 
     @Override
-    public List<Vehicule> getAllVehicules() {
-        return vehiculeRepository.findAll();
+    public Set<Vehicule> getAllVehicules() {
+        return new HashSet<>(vehiculeRepository.findAll());
+
     }
 }

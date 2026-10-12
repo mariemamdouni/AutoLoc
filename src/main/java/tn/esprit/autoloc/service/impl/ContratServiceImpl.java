@@ -6,7 +6,8 @@ import tn.esprit.autoloc.domain.Contrat;
 import tn.esprit.autoloc.repository.ContratRepository;
 import tn.esprit.autoloc.service.interfaces.IContratService;
 
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 @Service
 @RequiredArgsConstructor
@@ -35,7 +36,8 @@ public class ContratServiceImpl implements IContratService {
     }
 
     @Override
-    public List<Contrat> getAllContrats() {
-        return contratRepository.findAll();
+    public Set<Contrat> getAllContrats() {
+        return new HashSet<>(contratRepository.findAll());
+
     }
 }

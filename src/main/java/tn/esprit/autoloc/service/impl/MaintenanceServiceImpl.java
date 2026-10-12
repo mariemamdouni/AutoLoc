@@ -6,7 +6,8 @@ import tn.esprit.autoloc.domain.Maintenance;
 import tn.esprit.autoloc.repository.MaintenanceRepository;
 import tn.esprit.autoloc.service.interfaces.IMaintenanceService;
 
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 @Service
 @RequiredArgsConstructor
@@ -35,7 +36,8 @@ public class MaintenanceServiceImpl implements IMaintenanceService {
     }
 
     @Override
-    public List<Maintenance> getAllMaintenances() {
-        return maintenanceRepository.findAll();
+    public Set<Maintenance> getAllMaintenances() {
+        return new HashSet<>(maintenanceRepository.findAll());
+
     }
 }

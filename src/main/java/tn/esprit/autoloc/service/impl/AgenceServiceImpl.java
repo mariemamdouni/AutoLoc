@@ -6,7 +6,8 @@ import tn.esprit.autoloc.domain.Agence;
 import tn.esprit.autoloc.repository.AgenceRepository;
 import tn.esprit.autoloc.service.interfaces.IAgenceService;
 
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 @Service
 @RequiredArgsConstructor
@@ -35,7 +36,7 @@ public class AgenceServiceImpl implements IAgenceService {
     }
 
     @Override
-    public List<Agence> getAllAgences() {
-        return agenceRepository.findAll();
+    public Set<Agence> getAllAgences() {
+        return new HashSet<>(agenceRepository.findAll());
     }
 }

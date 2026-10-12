@@ -6,7 +6,8 @@ import tn.esprit.autoloc.domain.Equipement;
 import tn.esprit.autoloc.repository.EquipementRepository;
 import tn.esprit.autoloc.service.interfaces.IEquipementService;
 
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 @Service
 @RequiredArgsConstructor
@@ -35,7 +36,8 @@ public class EquipementServiceImpl implements IEquipementService {
     }
 
     @Override
-    public List<Equipement> getAllEquipements() {
-        return equipementRepository.findAll();
+    public Set<Equipement> getAllEquipements() {
+        return new HashSet<>(equipementRepository.findAll());
+
     }
 }

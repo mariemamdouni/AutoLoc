@@ -6,7 +6,8 @@ import tn.esprit.autoloc.domain.Paiement;
 import tn.esprit.autoloc.repository.PaiementRepository;
 import tn.esprit.autoloc.service.interfaces.IPaiementService;
 
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 @Service
 @RequiredArgsConstructor
@@ -35,7 +36,8 @@ public class PaiementServiceImpl implements IPaiementService {
     }
 
     @Override
-    public List<Paiement> getAllPaiements() {
-        return paiementRepository.findAll();
+    public Set<Paiement> getAllPaiements() {
+        return new HashSet<>(paiementRepository.findAll());
+
     }
 }

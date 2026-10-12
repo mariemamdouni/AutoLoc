@@ -6,7 +6,8 @@ import tn.esprit.autoloc.domain.Employe;
 import tn.esprit.autoloc.repository.EmployeRepository;
 import tn.esprit.autoloc.service.interfaces.IEmployeService;
 
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 @Service
 @RequiredArgsConstructor
@@ -35,7 +36,8 @@ public class EmployeServiceImpl implements IEmployeService {
     }
 
     @Override
-    public List<Employe> getAllEmployes() {
-        return employeRepository.findAll();
+    public Set<Employe> getAllEmployes() {
+        return new HashSet<>(employeRepository.findAll());
+
     }
 }

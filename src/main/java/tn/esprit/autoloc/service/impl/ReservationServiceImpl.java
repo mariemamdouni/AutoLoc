@@ -6,7 +6,8 @@ import tn.esprit.autoloc.domain.Reservation;
 import tn.esprit.autoloc.repository.ReservationRepository;
 import tn.esprit.autoloc.service.interfaces.IReservationService;
 
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 @Service
 @RequiredArgsConstructor
@@ -35,7 +36,8 @@ public class ReservationServiceImpl implements IReservationService {
     }
 
     @Override
-    public List<Reservation> getAllReservations() {
-        return reservationRepository.findAll();
+    public Set<Reservation> getAllReservations() {
+        return new HashSet<>(reservationRepository.findAll());
+
     }
 }
